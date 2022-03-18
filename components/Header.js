@@ -12,7 +12,7 @@ const Header = () => {
   const router = useRouter();
 
   return (
-    <div className='sticky top-0 h-[72px] px-10 
+    <header className='sticky top-0 h-[72px] px-10 
       bg-[#030511] z-[1000] flex items-center md:px-12'>
         <Image
         onClick={() => router.push("/")}
@@ -68,7 +68,7 @@ const Header = () => {
         }
         
         
-    </div>
+    </header>
   )
 }
 

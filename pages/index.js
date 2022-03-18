@@ -1,7 +1,9 @@
 import { getSession, useSession } from 'next-auth/client';
-import Head from 'next/head'
-import Image from 'next/image'
+import Head from 'next/head';
+import Branding from '../components/Branding';
 import Header from '../components/Header'
+import Hero from '../components/Hero';
+import Slider from '../components/Slider';
 
 
 export default function Home() {
@@ -17,6 +19,14 @@ export default function Home() {
       </Head>
 
       <Header/>
+      {
+        session ? <Hero/> : (
+          <main>
+            <Slider/>
+            <Branding/>
+          </main>
+        )
+      }
     </>
   )
 }
