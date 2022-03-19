@@ -47,10 +47,10 @@ export default function Home({
             <Slider/>
             <Branding/>
 
-            <MoviesCollection results={popularMovies} title="Popular Movies" />
+            {/* <MoviesCollection results={popularMovies} title="Popular Movies" /> */}
             {/* <ShowsCollection results={popularShows} title="Popular Shows" /> */}
 
-            <MoviesCollection results={topRatedMovies} title="Top Rated Movies" />
+            {/* <MoviesCollection results={topRatedMovies} title="Top Rated Movies" /> */}
             {/* <ShowsCollection results={topRatedShows} title="Top Rated Shows" /> */}
 
           </main>
@@ -65,38 +65,38 @@ export default function Home({
 export async function getServerSideProps(context){
   const session = await getSession(context);
 
-  const [ 
-    popularMoviesRes, 
-    popularShowsRes, 
-    topRatedMoviesRes, 
-    topRatedShowsRes
-  ] = await Promise.all([
-    await fetch(POPULAR_MOVIES_URL), 
-    await fetch(POPULAR_SHOWS_URL),
-    await fetch(TOP_RATED_MOVIES), 
-    await fetch(TOP_RATED_SHOWS)
-  ]);
+  // const [ 
+  //   popularMoviesRes, 
+  //   popularShowsRes, 
+  //   topRatedMoviesRes, 
+  //   topRatedShowsRes
+  // ] = await Promise.all([
+  //   await fetch(POPULAR_MOVIES_URL), 
+  //   await fetch(POPULAR_SHOWS_URL),
+  //   await fetch(TOP_RATED_MOVIES), 
+  //   await fetch(TOP_RATED_SHOWS)
+  // ]);
 
 
-  const [ 
-    popularMovies, 
-    popularShows, 
-    topRatedMovies, 
-    topRatedShows 
-  ] = await Promise.all([
-    await popularMoviesRes.json(), 
-    await popularShowsRes.json(), 
-    await topRatedMoviesRes.json(), 
-    await topRatedShowsRes.json()
-  ]);
+  // const [ 
+  //   popularMovies, 
+  //   popularShows, 
+  //   topRatedMovies, 
+  //   topRatedShows 
+  // ] = await Promise.all([
+  //   await popularMoviesRes.json(), 
+  //   await popularShowsRes.json(), 
+  //   await topRatedMoviesRes.json(), 
+  //   await topRatedShowsRes.json()
+  // ]);
 
   return {
     props: {
       session,
-      popularMovies: popularMovies.results, 
-      popularShows: popularShows.results, 
-      topRatedMovies: topRatedMovies.results, 
-      topRatedShows: topRatedShows.results
+      // popularMovies: popularMovies.results, 
+      // popularShows: popularShows.results, 
+      // topRatedMovies: topRatedMovies.results, 
+      // topRatedShows: topRatedShows.results
     }
   }
 }
