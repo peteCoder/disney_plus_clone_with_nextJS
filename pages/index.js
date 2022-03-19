@@ -1,12 +1,34 @@
-import { getSession, useSession } from 'next-auth/client';
 import Head from 'next/head';
-import Branding from '../components/Branding';
-import Header from '../components/Header'
-import Hero from '../components/Hero';
-import Slider from '../components/Slider';
+
+// User Session
+import { getSession, useSession } from 'next-auth/client';
+
+// Components
+import { 
+  Branding, 
+  Header, 
+  Hero, 
+  ShowsCollection, 
+  MoviesCollection, 
+  Slider
+} from '../components';
+
+// GET API Endpoints
+import { 
+  POPULAR_MOVIES_URL, 
+  POPULAR_SHOWS_URL,
+  TOP_RATED_MOVIES, 
+  TOP_RATED_SHOWS
+} from '../API';
 
 
-export default function Home() {
+// Function
+export default function Home({
+  popularMovies, 
+  popularShows, 
+  topRatedMovies, 
+  topRatedShows 
+}) {
   const [session, _] = useSession();
   // _ represents loading
   
@@ -21,9 +43,16 @@ export default function Home() {
       <Header/>
       {
         session ? <Hero/> : (
-          <main>
+          <main className='main'>
             <Slider/>
             <Branding/>
+
+            <MoviesCollection results={popularMovies} title="Popular Movies" />
+            {/* <ShowsCollection results={popularShows} title="Popular Shows" /> */}
+
+            <MoviesCollection results={topRatedMovies} title="Top Rated Movies" />
+            {/* <ShowsCollection results={topRatedShows} title="Top Rated Shows" /> */}
+
           </main>
         )
       }
@@ -32,12 +61,42 @@ export default function Home() {
 }
 
 
-
+// getServerSideProps Function
 export async function getServerSideProps(context){
   const session = await getSession(context);
+
+  const [ 
+    popularMoviesRes, 
+    popularShowsRes, 
+    topRatedMoviesRes, 
+    topRatedShowsRes
+  ] = await Promise.all([
+    await fetch(POPULAR_MOVIES_URL), 
+    await fetch(POPULAR_SHOWS_URL),
+    await fetch(TOP_RATED_MOVIES), 
+    await fetch(TOP_RATED_SHOWS)
+  ]);
+
+
+  const [ 
+    popularMovies, 
+    popularShows, 
+    topRatedMovies, 
+    topRatedShows 
+  ] = await Promise.all([
+    await popularMoviesRes.json(), 
+    await popularShowsRes.json(), 
+    await topRatedMoviesRes.json(), 
+    await topRatedShowsRes.json()
+  ]);
+
   return {
     props: {
-      session
+      session,
+      popularMovies: popularMovies.results, 
+      popularShows: popularShows.results, 
+      topRatedMovies: topRatedMovies.results, 
+      topRatedShows: topRatedShows.results
     }
   }
 }
