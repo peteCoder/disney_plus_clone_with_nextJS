@@ -151,8 +151,6 @@ export async function getServerSideProps(context){
 
   const request = await fetchTVShow(id);
 
-
-
   return {
     props:{
       session,
