@@ -116,7 +116,7 @@ export const Movie = ({result}) => {
                         <XIcon className="h-5" />
                       </div>
                     </div>
-                    <div className="relative pt-[56.25%]" >
+                    <div className="relative pt-[40.25%]" >
                       <ReactPlayer 
                         url={`https://www.youtube.com/watch?v=${result.videos?.results[index]?.key}`}
                         width="100%"

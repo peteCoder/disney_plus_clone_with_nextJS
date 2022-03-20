@@ -6,13 +6,13 @@ export const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/original/';
 export const API_KEY = process.env.API_KEY;
 
 
-export const POPULAR_MOVIES_URL = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+export const POPULAR_MOVIES_URL = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US`;
 
-export const POPULAR_SHOWS_URL = `${API_URL}tv/popular?api_key=${API_KEY}&language=en-US&page=1`;
+export const POPULAR_SHOWS_URL = `${API_URL}tv/popular?api_key=${API_KEY}&language=en-US`;
 
-export const TOP_RATED_MOVIES = `${API_URL}movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`;
+export const TOP_RATED_MOVIES = `${API_URL}movie/top_rated?api_key=${API_KEY}&language=en-US`;
 
-export const TOP_RATED_SHOWS = `${API_URL}tv/top_rated?api_key=${API_KEY}&language=en-US&page=1`;
+export const TOP_RATED_SHOWS = `${API_URL}tv/top_rated?api_key=${API_KEY}&language=en-US`;
 
 
 export const fetchMovie = async movieId => {
