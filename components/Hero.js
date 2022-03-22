@@ -30,6 +30,7 @@ const Hero = () => {
           tracking-wide font-extrabold py-4 px-6 w-full 
           rounded hover:bg-[#0485ee]' >Get all there</button>
 
+
           <p className='text-sm text-center'>
             {" "}
             Get Premier Access to Raya and the Last Dragon for animated fee 
@@ -41,6 +42,8 @@ const Hero = () => {
       </div>
 
       
+
+
     </section>
   )
 }
